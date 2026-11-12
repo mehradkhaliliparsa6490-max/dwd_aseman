@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#eaf3ff">
+    <title>آریا صنعت معصومی | مرکز دانلود</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blue-900: #0b2a5b;
+            --blue-800: #12488f;
+            --blue-700: #1554a8;
+            --blue-600: #1f6fe0;
+            --blue-500: #3b8bff;
+            --blue-200: #b9d6ff;
+            --blue-100: #e3eefe;
+            --text: #0f2547;
+            --muted: #6b86a8;
+            --line: rgba(160, 195, 240, .55);
+            --glass: linear-gradient(160deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .58));
+            --glass-stroke: rgba(255, 255, 255, .9);
+            --shadow: 0 12px 34px -14px rgba(23, 74, 150, .35);
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            min-height: 100dvh;
+            background:
+                radial-gradient(900px 520px at 100% -8%, #cfe3ff 0%, rgba(207, 227, 255, 0) 62%),
+                radial-gradient(760px 460px at -12% 8%, #e6f1ff 0%, rgba(230, 241, 255, 0) 58%),
+                linear-gradient(180deg, #f5faff 0%, #e9f3ff 45%, #ffffff 100%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== حباب‌های پس‌زمینه ===== */
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(58px);
+            opacity: .5;
+        }
+        .blob.b1 { width: 260px; height: 260px; background: #a9cfff; top: -70px; left: -60px; }
+        .blob.b2 { width: 220px; height: 220px; background: #c9e2ff; top: 38%; right: -80px; }
+        .blob.b3 { width: 300px; height: 300px; background: #dbeaff; bottom: -110px; left: 20%; }
+
+        /* ===== نوار بالا ===== */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .93), rgba(255, 255, 255, .64));
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border-bottom: 1px solid rgba(255, 255, 255, .85);
+            box-shadow: 0 8px 24px -22px rgba(15, 60, 130, .9);
+        }
+        .topbar-inner {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .logo {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #fff;
+            background: linear-gradient(135deg, #4f9bff, #1554a8);
+            box-shadow: 0 10px 20px -10px rgba(21, 84, 168, .95), inset 0 1px 0 rgba(255, 255, 255, .45);
+        }
+        .brand-text { flex: 1; min-width: 0; }
+        .brand-text h1 {
+            margin: 0;
+            font-size: .98rem;
+            font-weight: 800;
+            letter-spacing: -.2px;
+            color: var(--blue-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .brand-text span {
+            font-size: .7rem;
+            color: var(--muted);
+            font-weight: 500;
+            display: block;
+        }
+
+        /* ===== محتوای اصلی ===== */
+        .wrap {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 20px 16px 60px;
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 24px;
+            animation: softDown .55s cubic-bezier(.2, .8, .3, 1) both;
+        }
+        .header-title h2 {
+            margin: 0 0 8px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--blue-900);
+        }
+        .header-title p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ===== کارت‌های نسخه ===== */
+        .version-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .version-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-stroke);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .95);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: softRise .6s cubic-bezier(.2, .8, .3, 1) both;
+            transition: transform .2s ease;
+        }
+        .version-card:active {
+            transform: scale(.985);
+        }
+
+        .version-card.latest {
+            border: 2px solid var(--blue-500);
+            box-shadow: 0 12px 34px -14px rgba(59, 139, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, .95);
+        }
+
+        .latest-badge {
+            position: absolute;
+            top: 14px;
+            left: -32px;
+            background: linear-gradient(135deg, #4f9bff, #1554a8);
+            color: #fff;
+            padding: 6px 36px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            transform: rotate(-45deg);
+            box-shadow: 0 4px 10px rgba(21, 84, 168, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed rgba(160, 195, 240, .6);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            margin-top: 4px;
+        }
+        
+        .v-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--blue-900);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .v-date {
+            font-size: 0.75rem;
+            color: var(--blue-700);
+            background: var(--blue-100);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .v-changes {
+            margin: 0 0 16px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .v-changes li {
+            font-size: 0.85rem;
+            color: #476a97;
+            font-weight: 500;
+            line-height: 1.8;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .v-changes li::before {
+            content: '•';
+            color: var(--blue-500);
+            font-weight: 800;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(135deg, #4f9bff, #1554a8);
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            box-shadow: 0 10px 20px -10px rgba(21, 84, 168, .95), inset 0 1px 0 rgba(255, 255, 255, .4);
+            transition: transform .15s, box-shadow .2s;
+            cursor: pointer;
+        }
+        .download-btn:active {
+            transform: scale(.97);
+            box-shadow: 0 4px 10px -5px rgba(21, 84, 168, .9);
+        }
+        
+        .download-btn.secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--blue-700);
+            border: 1px solid var(--blue-200);
+            box-shadow: 0 4px 10px -8px rgba(21, 84, 168, .3);
+        }
+        .download-btn.secondary:active {
+            background: #fff;
+        }
+
+        /* ===== حالت لودینگ / خطا ===== */
+        .loading-state, .error-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--glass);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-stroke);
+        }
+        
+        .error-state {
+            color: #c93b52;
+            background: rgba(255, 240, 242, 0.8);
+            border-color: rgba(240, 170, 180, 0.9);
+        }
+
+        @keyframes softDown {
+            0% { opacity: 0; transform: translateY(-14px); filter: blur(4px); }
+            100% { opacity: 1; transform: none; filter: none; }
+        }
+        @keyframes softRise {
+            0% { opacity: 0; transform: translateY(18px) scale(.97); filter: blur(6px); }
+            100% { opacity: 1; transform: none; filter: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-decor">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+</div>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="logo">آ</div>
+        <div class="brand-text">
+            <h1>آریا صنعت معصومی</h1>
+            <span>مرکز دانلود و آپدیت برنامه</span>
+        </div>
+    </div>
+</header>
+
+<div class="wrap">
+    <div class="header-title">
+        <h2>نسخه‌های نرم‌افزار</h2>
+        <p>آخرین تغییرات و نسخه‌های قبلی را از اینجا دریافت کنید.</p>
+    </div>
+
+    <div class="version-list" id="versionList">
+        <!-- کارت‌های نسخه توسط جاوا اسکریپت اینجا رندر می‌شوند -->
+        <div class="loading-state">در حال دریافت اطلاعات از سرور...</div>
+    </div>
+</div>
+
+<script>
+    // نام فایل JSON که در همین مخزن قرار دارد
+    const JSON_URL = 'updates.json';
+
+    function escapeHtml(str) {
+        return String(str || '').replace(/[&<>"']/g, function (s) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[s];
+        });
+    }
+
+    // تابع مقایسه نسخه‌ها برای مرتب‌سازی دقیق
+    function compareVersions(v1, v2) {
+        const p1 = String(v1).split('.').map(Number);
+        const p2 = String(v2).split('.').map(Number);
+        for (let i = 0; i < Math.max(p1.length, p2.length); i++) {
+            const n1 = p1[i] || 0;
+            const n2 = p2[i] || 0;
+            if (n1 > n2) return -1; // v1 جدیدتر است
+            if (n1 < n2) return 1;  // v2 جدیدتر است
+        }
+        return 0;
+    }
+
+    async function loadVersions() {
+        const container = document.getElementById('versionList');
+
+        try {
+            // استفاده از timestamp برای جلوگیری از کش شدن
+            const res = await fetch(JSON_URL + '?t=' + Date.now());
+            if (!res.ok) throw new Error('Network response was not ok');
+            
+            const data = await res.json();
+            
+            if (!data.all_versions || !Array.isArray(data.all_versions)) {
+                throw new Error('ساختار فایل JSON نامعتبر است');
+            }
+
+            // مرتب‌سازی نسخه‌ها از جدید به قدیم
+            const versions = data.all_versions.sort((a, b) => compareVersions(a.version, b.version));
+            const latestVersion = data.latest_version;
+
+            container.innerHTML = ''; // پاک کردن حالت لودینگ
+
+            if (versions.length === 0) {
+                container.innerHTML = '<div class="loading-state">هیچ نسخه‌ای برای نمایش وجود ندارد.</div>';
+                return;
+            }
+
+            versions.forEach((v, index) => {
+                const isLatest = (v.version === latestVersion) || (index === 0);
+                const card = document.createElement('div');
+                card.className = 'version-card' + (isLatest ? ' latest' : '');
+                // تاخیر در انیمیشن برای ظاهر شدن نرم و پشت سر هم
+                card.style.animationDelay = (index * 0.1) + 's';
+
+                let changesHtml = '';
+                if (v.changes && v.changes.length > 0) {
+                    changesHtml = '<ul class="v-changes">' + 
+                                  v.changes.map(c => `<li>${escapeHtml(c)}</li>`).join('') + 
+                                  '</ul>';
+                } else {
+                    changesHtml = '<ul class="v-changes"><li>تغییرات ثبت نشده است</li></ul>';
+                }
+
+                card.innerHTML = `
+                    ${isLatest ? '<div class="latest-badge">جدیدترین</div>' : ''}
+                    <div class="card-header">
+                        <div class="v-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--blue-500);">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                            نسخه ${escapeHtml(v.version)}
+                        </div>
+                        <div class="v-date">${escapeHtml(v.date || 'نامشخص')}</div>
+                    </div>
+                    ${changesHtml}
+                    <a href="${escapeHtml(v.url)}" class="download-btn ${isLatest ? '' : 'secondary'}" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        دریافت فایل نصبی (APK)
+                    </a>
+                `;
+
+                container.appendChild(card);
+            });
+
+        } catch (error) {
+            console.error('Error loading versions:', error);
+            container.innerHTML = `
+                <div class="error-state">
+                    خطا در بارگذاری اطلاعات.<br>
+                    لطفاً اتصال اینترنت خود را بررسی کنید یا بعداً تلاش نمایید.
+                </div>
+            `;
+        }
+    }
+
+    // اجرای تابع هنگام لود شدن صفحه
+    document.addEventListener('DOMContentLoaded', loadVersions);
+</script>
+</body>
+</html>
