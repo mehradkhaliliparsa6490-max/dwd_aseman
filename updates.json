@@ -1,0 +1,17 @@
+{
+  "latest_version": "1.6.0",
+  "download_url": "https://github.com/mehrdakhaliilparsa6490-max/dwd_aseman/raw/main/v1.6.0.APK",
+  "release_date": "۱۴۰۳/۰۶/۰۱",
+  "release_notes": [
+    "نسخه اولیه نرم‌افزار",
+    "راه اندازی سیستم فاکتور"
+  ],
+  "all_versions": [
+    {
+      "version": "1.6.0",
+      "date": "۱۴۰۳/۰۶/۰۱",
+      "url": "https://github.com/mehrdakhaliilparsa6490-max/dwd_aseman/raw/main/v1.6.0.APK",
+      "changes": ["نسخه اولیه نرم‌افزار", "راه اندازی سیستم فاکتور"]
+    }
+  ]
+}
